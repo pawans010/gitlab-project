@@ -1,0 +1,13 @@
+# This is an example values.yaml. It shows how to set up an external postgresql instead of the in-cluster postgresql provided by default
+# https://gitlab.com/gitlab-org/charts/gitlab/tree/master/doc/advanced/external-db
+postgresql:
+  install: false
+global:
+  psql:
+    host: gitlab-instance-1.c9j1pgqg3hhs.ap-southeast-1.rds.amazonaws.com
+    password:
+      secret: gitlab-postgresql-password
+      key: postgresql-postgres-password
+    port: 5432
+    database: gitlab
+    username: gitlab

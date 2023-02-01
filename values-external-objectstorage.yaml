@@ -1,0 +1,42 @@
+# This is an example values.yaml. It shows how to configure external object storage instead of the in-cluster minio provided by default
+# https://gitlab.com/gitlab-org/charts/gitlab/tree/master/doc/advanced/external-object-storage
+global:
+  minio:
+    enabled: false
+  registry:
+    bucket: tdg-gitlab-registry-storage
+  appConfig:
+    lfs:
+      bucket: tdg-gitlab-lfs-storage
+      connection: # https://gitlab.com/gitlab-org/charts/gitlab/blob/master/doc/charts/globals.md#connection
+        secret: gitlab-rails-storage
+        key: connection
+    artifacts:
+      bucket: tdg-gitlab-artifacts-storage
+      connection:
+        secret: gitlab-rails-storage
+        key: connection
+    uploads:
+      bucket: tdg-gitlab-uploads-storage
+      connection:
+        secret: gitlab-rails-storage
+        key: connection
+    packages:
+      bucket: tdg-gitlab-packages-storage
+      connection:
+        secret: gitlab-rails-storage
+        key: connection
+    backups:
+      bucket: tdg-gitlab-backup-storage
+      tmpBucket: tdg-gitlab-tmp-storage
+gitlab:
+  toolbox:
+    backups:
+      objectStorage:
+        config:
+          secret: storage-config
+          key: config
+registry:
+  storage:
+    secret: registry-storage
+    key: config
