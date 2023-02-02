@@ -1,0 +1,8 @@
+redis:
+  install: false
+global:
+  redis:
+    host: gitlab-redis.do65qw.ng.0001.apse1.cache.amazonaws.com
+    port: 6379
+    password:
+      enabled: false
